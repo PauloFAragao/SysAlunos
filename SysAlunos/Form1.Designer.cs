@@ -37,17 +37,25 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Btn_editar = new System.Windows.Forms.Button();
+            this.Txt_id_editar = new System.Windows.Forms.TextBox();
+            this.Txt_numero_editar = new System.Windows.Forms.TextBox();
+            this.Txt_nome_editar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Lbl_retorno = new System.Windows.Forms.Label();
-            this.Txt_nome_editar = new System.Windows.Forms.TextBox();
-            this.Txt_numero_editar = new System.Windows.Forms.TextBox();
-            this.Txt_id_editar = new System.Windows.Forms.TextBox();
-            this.Btn_editar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.Txt_notapt = new System.Windows.Forms.TextBox();
+            this.Txt_notast = new System.Windows.Forms.TextBox();
+            this.Txt_notaqt = new System.Windows.Forms.TextBox();
+            this.Txt_notatt = new System.Windows.Forms.TextBox();
+            this.Btn_editar_notas = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Txt_id_editar_ = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -133,6 +141,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label8);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.Txt_id_editar_);
+            this.tabPage2.Controls.Add(this.Btn_editar_notas);
+            this.tabPage2.Controls.Add(this.Txt_notaqt);
+            this.tabPage2.Controls.Add(this.Txt_notatt);
+            this.tabPage2.Controls.Add(this.Txt_notast);
+            this.tabPage2.Controls.Add(this.Txt_notapt);
             this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label4);
@@ -153,6 +169,73 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(368, 129);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Número";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(377, 107);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Nome";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(394, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(433, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Temprario - Editar Aluno";
+            // 
+            // Btn_editar
+            // 
+            this.Btn_editar.Location = new System.Drawing.Point(579, 102);
+            this.Btn_editar.Name = "Btn_editar";
+            this.Btn_editar.Size = new System.Drawing.Size(75, 23);
+            this.Btn_editar.TabIndex = 11;
+            this.Btn_editar.Text = "Editar";
+            this.Btn_editar.UseVisualStyleBackColor = true;
+            this.Btn_editar.Click += new System.EventHandler(this.Btn_editar_Click);
+            // 
+            // Txt_id_editar
+            // 
+            this.Txt_id_editar.Location = new System.Drawing.Point(418, 74);
+            this.Txt_id_editar.Name = "Txt_id_editar";
+            this.Txt_id_editar.Size = new System.Drawing.Size(145, 20);
+            this.Txt_id_editar.TabIndex = 10;
+            // 
+            // Txt_numero_editar
+            // 
+            this.Txt_numero_editar.Location = new System.Drawing.Point(418, 126);
+            this.Txt_numero_editar.Name = "Txt_numero_editar";
+            this.Txt_numero_editar.Size = new System.Drawing.Size(145, 20);
+            this.Txt_numero_editar.TabIndex = 9;
+            // 
+            // Txt_nome_editar
+            // 
+            this.Txt_nome_editar.Location = new System.Drawing.Point(418, 100);
+            this.Txt_nome_editar.Name = "Txt_nome_editar";
+            this.Txt_nome_editar.Size = new System.Drawing.Size(145, 20);
+            this.Txt_nome_editar.TabIndex = 8;
             // 
             // label2
             // 
@@ -181,72 +264,68 @@
             this.Lbl_retorno.TabIndex = 7;
             this.Lbl_retorno.Text = "- - -";
             // 
-            // Txt_nome_editar
+            // Txt_notapt
             // 
-            this.Txt_nome_editar.Location = new System.Drawing.Point(369, 213);
-            this.Txt_nome_editar.Name = "Txt_nome_editar";
-            this.Txt_nome_editar.Size = new System.Drawing.Size(145, 20);
-            this.Txt_nome_editar.TabIndex = 8;
+            this.Txt_notapt.Location = new System.Drawing.Point(340, 220);
+            this.Txt_notapt.Name = "Txt_notapt";
+            this.Txt_notapt.Size = new System.Drawing.Size(70, 20);
+            this.Txt_notapt.TabIndex = 16;
             // 
-            // Txt_numero_editar
+            // Txt_notast
             // 
-            this.Txt_numero_editar.Location = new System.Drawing.Point(369, 239);
-            this.Txt_numero_editar.Name = "Txt_numero_editar";
-            this.Txt_numero_editar.Size = new System.Drawing.Size(145, 20);
-            this.Txt_numero_editar.TabIndex = 9;
+            this.Txt_notast.Location = new System.Drawing.Point(416, 220);
+            this.Txt_notast.Name = "Txt_notast";
+            this.Txt_notast.Size = new System.Drawing.Size(70, 20);
+            this.Txt_notast.TabIndex = 17;
             // 
-            // Txt_id_editar
+            // Txt_notaqt
             // 
-            this.Txt_id_editar.Location = new System.Drawing.Point(369, 187);
-            this.Txt_id_editar.Name = "Txt_id_editar";
-            this.Txt_id_editar.Size = new System.Drawing.Size(145, 20);
-            this.Txt_id_editar.TabIndex = 10;
+            this.Txt_notaqt.Location = new System.Drawing.Point(568, 220);
+            this.Txt_notaqt.Name = "Txt_notaqt";
+            this.Txt_notaqt.Size = new System.Drawing.Size(70, 20);
+            this.Txt_notaqt.TabIndex = 19;
             // 
-            // Btn_editar
+            // Txt_notatt
             // 
-            this.Btn_editar.Location = new System.Drawing.Point(530, 215);
-            this.Btn_editar.Name = "Btn_editar";
-            this.Btn_editar.Size = new System.Drawing.Size(75, 23);
-            this.Btn_editar.TabIndex = 11;
-            this.Btn_editar.Text = "Editar";
-            this.Btn_editar.UseVisualStyleBackColor = true;
-            this.Btn_editar.Click += new System.EventHandler(this.Btn_editar_Click);
+            this.Txt_notatt.Location = new System.Drawing.Point(492, 220);
+            this.Txt_notatt.Name = "Txt_notatt";
+            this.Txt_notatt.Size = new System.Drawing.Size(70, 20);
+            this.Txt_notatt.TabIndex = 18;
             // 
-            // label3
+            // Btn_editar_notas
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(394, 158);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Temprario - Editar";
+            this.Btn_editar_notas.Location = new System.Drawing.Point(450, 246);
+            this.Btn_editar_notas.Name = "Btn_editar_notas";
+            this.Btn_editar_notas.Size = new System.Drawing.Size(75, 23);
+            this.Btn_editar_notas.TabIndex = 20;
+            this.Btn_editar_notas.Text = "Editar";
+            this.Btn_editar_notas.UseVisualStyleBackColor = true;
+            this.Btn_editar_notas.Click += new System.EventHandler(this.Btn_editar_notas_Click);
             // 
-            // label4
+            // label7
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(345, 194);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 13);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "ID";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(394, 201);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "ID";
             // 
-            // label5
+            // Txt_id_editar_
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(328, 220);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Nome";
+            this.Txt_id_editar_.Location = new System.Drawing.Point(418, 194);
+            this.Txt_id_editar_.Name = "Txt_id_editar_";
+            this.Txt_id_editar_.Size = new System.Drawing.Size(145, 20);
+            this.Txt_id_editar_.TabIndex = 21;
             // 
-            // label6
+            // label8
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(319, 242);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Número";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(433, 169);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Temprario - Editar Notas";
             // 
             // Form1
             // 
@@ -291,6 +370,14 @@
         private System.Windows.Forms.TextBox Txt_id_editar;
         private System.Windows.Forms.TextBox Txt_numero_editar;
         private System.Windows.Forms.TextBox Txt_nome_editar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox Txt_id_editar_;
+        private System.Windows.Forms.Button Btn_editar_notas;
+        private System.Windows.Forms.TextBox Txt_notaqt;
+        private System.Windows.Forms.TextBox Txt_notatt;
+        private System.Windows.Forms.TextBox Txt_notast;
+        private System.Windows.Forms.TextBox Txt_notapt;
     }
 }
 

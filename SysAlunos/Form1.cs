@@ -34,32 +34,151 @@ namespace SysAlunos
             this.OcultarColunas();
         }
 
+        //Inserção de alunos
         private void InserirAluno()
         {
-            string nome = this.Txt_nome_adiconar.Text;
-            int numero = int.Parse(this.Txt_numero_adiconar.Text);
+            string nome = "";
+            int numero = 0;
 
-            if(nome != null && numero != 0)
+            //capturando o valor do campo nome
+            if (!String.IsNullOrWhiteSpace(this.Txt_nome_adiconar.Text))
+            {
+                nome = this.Txt_nome_adiconar.Text;
+            }
+            else { Debug.WriteLine("Campo nome não preenchido"); }
+
+            //capturando o valor do campo numero
+            if (!String.IsNullOrWhiteSpace(this.Txt_numero_adiconar.Text))
+            {
+                if (int.TryParse(this.Txt_numero_adiconar.Text, out int parsedNumero))
+                {
+                    numero = parsedNumero;
+                }
+                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
+            }
+            else { Debug.WriteLine("Campo numero não preenchido"); }
+
+            //string nome = this.Txt_nome_adiconar.Text;
+            //int numero = int.Parse(this.Txt_numero_adiconar.Text);
+
+            if (nome != null && numero > 0)
             {
                 Lbl_retorno.Text = dados.Inserir(nome, numero);
             }
         }
 
+        //Edição de alunos
         private void EditarAluno()
         {
-            int id = int.Parse(this.Txt_id_editar.Text);
-            string nome = this.Txt_nome_editar.Text;
-            int numero = int.Parse(this.Txt_numero_editar.Text);
+            int id = 0;
+            string nome = "";
+            int numero = 0;
 
-            //Debug.WriteLine("ID: "+ id);
-            //Debug.WriteLine("Nome: " + nome);
-            //Debug.WriteLine("Número: " + numero);
+            //capturando o valor do campo id
+            if (!String.IsNullOrWhiteSpace(this.Txt_id_editar.Text))
+            {
+                if (int.TryParse(this.Txt_id_editar.Text, out int parsedId))
+                {
+                    id = parsedId;
+                }
+                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
+            } else { Debug.WriteLine("Campo id não preenchido"); }
 
-            //if ( id != 0 && String.IsNullOrWhiteSpace(nome) && numero != 0) 
-            //{
-                //Debug.WriteLine("Chamando o método EditarAluno");
+            //capturando o valor do campo nome
+            if (!String.IsNullOrWhiteSpace(this.Txt_nome_editar.Text))
+            {
+                nome = this.Txt_nome_editar.Text;
+            }
+            else { Debug.WriteLine("Campo nome não preenchido"); }
+
+            //capturando o valor do campo numero
+            if (!String.IsNullOrWhiteSpace(this.Txt_numero_editar.Text))
+            {
+                if (int.TryParse(this.Txt_numero_editar.Text, out int parsedNumero))
+                {
+                    numero = parsedNumero;
+                }
+                else { Debug.WriteLine("O valor inserido no campo Número não pode ser convertido para inteiro!"); }
+            }
+            else { Debug.WriteLine("Campo número não preenchido"); }
+
+            //verificando para mandar os dados para o método que vai escrever no banco
+            if ( id > 0 && !String.IsNullOrWhiteSpace(nome) && numero > 0) 
+            {
+                Debug.WriteLine("Chamando o método EditarAluno");
                 Lbl_retorno.Text = dados.EditarAluno(id, nome, numero);
-            //}
+            }
+        }
+
+        //edição de notas
+        private void EditarNotas()
+        {   
+            int id = 0;
+            decimal notaPt = 0m;
+            decimal notaSt = 0m;
+            decimal notaTt = 0m;
+            decimal notaQt = 0m;
+
+            //capturando o valor do campo id
+            if (!String.IsNullOrWhiteSpace(this.Txt_id_editar_.Text))
+            {
+                if (int.TryParse(this.Txt_id_editar_.Text, out int parsedId))
+                {
+                    id = parsedId;
+                }
+                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
+            }
+            else { Debug.WriteLine("Campo id não preenchido"); }
+
+            //capturando o valor do campo da nota do primeiro trimestre
+            if (!String.IsNullOrWhiteSpace(this.Txt_notapt.Text))
+            {
+                if (decimal.TryParse(this.Txt_notapt.Text, out decimal parsedNPt))
+                {
+                    notaPt = parsedNPt;
+                }
+                else { Debug.WriteLine("O valor inserido no campo da nota do primeiro trimestre não pode ser convertido para float!"); }
+            }
+            else { Debug.WriteLine("Campo da nota do primeiro trimestre não preenchido"); }
+
+            //capturando o valor do campo da nota do segundo trimestre
+            if (!String.IsNullOrWhiteSpace(this.Txt_notast.Text))
+            {
+                if (decimal.TryParse(this.Txt_notast.Text, out decimal parsedNSt))
+                {
+                    notaSt = parsedNSt;
+                }
+                else { Debug.WriteLine("O valor inserido no campo da nota do segundo trimestre não pode ser convertido para float!"); }
+            }
+            else { Debug.WriteLine("Campo da nota do segundo trimestre não preenchido"); }
+
+            //capturando o valor do campo da nota do terceciro trimestre
+            if (!String.IsNullOrWhiteSpace(this.Txt_notatt.Text))
+            {
+                if (decimal.TryParse(this.Txt_notatt.Text, out decimal parsedNTt))
+                {
+                    notaTt = parsedNTt;
+                }
+                else { Debug.WriteLine("O valor inserido no campo da nota do terceciro trimestre não pode ser convertido para float!"); }
+            }
+            else { Debug.WriteLine("Campo da nota do terceciro trimestre não preenchido"); }
+
+            //capturando o valor do campo da nota do quarto trimestre
+            if (!String.IsNullOrWhiteSpace(this.Txt_notaqt.Text))
+            {
+                if (decimal.TryParse(this.Txt_notaqt.Text, out decimal parsedNQt))
+                {
+                    notaQt = parsedNQt;
+                }
+                else { Debug.WriteLine("O valor inserido no campo da nota do quarto trimestre não pode ser convertido para float!"); }
+            }
+            else { Debug.WriteLine("Campo da nota do quarto trimestre não preenchido"); }
+
+            //verificando para mandar os dados para o método que vai escrever no banco
+            if (id > 0 && notaPt > 0 && notaSt > 0 && notaTt > 0 && notaQt > 0)
+            {
+                Lbl_retorno.Text = dados.EditarNotas(id, notaPt, notaSt, notaTt, notaQt);
+            }
         }
 
         //Ocultar as colunas
@@ -127,6 +246,11 @@ namespace SysAlunos
         private void Btn_editar_Click(object sender, EventArgs e)
         {
             EditarAluno();
+        }
+
+        private void Btn_editar_notas_Click(object sender, EventArgs e)
+        {
+            EditarNotas();
         }
     }
 }

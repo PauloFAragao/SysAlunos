@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\SysAlunos\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1664DA77-F04F-47AA-9063-3F57B67A1FD7}|SysAlunos\\SysAlunos.csproj|C:\\SysAlunos\\sysalunos\\dados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1664DA77-F04F-47AA-9063-3F57B67A1FD7}|SysAlunos\\SysAlunos.csproj|c:\\sysalunos\\sysalunos\\dados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1664DA77-F04F-47AA-9063-3F57B67A1FD7}|SysAlunos\\SysAlunos.csproj|solutionrelative:sysalunos\\dados.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1664DA77-F04F-47AA-9063-3F57B67A1FD7}|SysAlunos\\SysAlunos.csproj|c:\\sysalunos\\sysalunos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1664DA77-F04F-47AA-9063-3F57B67A1FD7}|SysAlunos\\SysAlunos.csproj|C:\\SysAlunos\\sysalunos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1664DA77-F04F-47AA-9063-3F57B67A1FD7}|SysAlunos\\SysAlunos.csproj|solutionrelative:sysalunos\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -22,21 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\SysAlunos\\SysAlunos\\Form1.cs",
-              "RelativeDocumentMoniker": "SysAlunos\\Form1.cs",
-              "ToolTip": "C:\\SysAlunos\\SysAlunos\\Form1.cs",
-              "RelativeToolTip": "SysAlunos\\Form1.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAgwDUAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T15:11:19.505Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -45,9 +32,22 @@
               "RelativeDocumentMoniker": "SysAlunos\\Dados.cs",
               "ToolTip": "C:\\SysAlunos\\SysAlunos\\Dados.cs",
               "RelativeToolTip": "SysAlunos\\Dados.cs",
-              "ViewState": "AgIAANwAAAAAAAAAAAAwwPAAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8BAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-31T15:07:09.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\SysAlunos\\SysAlunos\\Form1.cs",
+              "RelativeDocumentMoniker": "SysAlunos\\Form1.cs",
+              "ToolTip": "C:\\SysAlunos\\SysAlunos\\Form1.cs",
+              "RelativeToolTip": "SysAlunos\\Form1.cs",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAQwLMAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T15:11:19.505Z",
               "EditorCaption": ""
             },
             {

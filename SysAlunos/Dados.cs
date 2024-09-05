@@ -141,7 +141,7 @@ namespace SysAlunos
                         SqlParameter parNotaPt = new SqlParameter
                         {
                             ParameterName = "@notapt",
-                            SqlDbType = SqlDbType.Float,
+                            SqlDbType = SqlDbType.Decimal,
                             Value = 0
                         };
                         sqlCmd.Parameters.Add(parNotaPt);
@@ -150,7 +150,7 @@ namespace SysAlunos
                         SqlParameter parNotaSt = new SqlParameter
                         {
                             ParameterName = "@notast",
-                            SqlDbType = SqlDbType.Float,
+                            SqlDbType = SqlDbType.Decimal,
                             Value = 0
                         };
                         sqlCmd.Parameters.Add(parNotaSt);
@@ -159,7 +159,7 @@ namespace SysAlunos
                         SqlParameter parNotaTt = new SqlParameter
                         {
                             ParameterName = "@notatt",
-                            SqlDbType = SqlDbType.Float,
+                            SqlDbType = SqlDbType.Decimal,
                             Value = 0
                         };
                         sqlCmd.Parameters.Add(parNotaTt);
@@ -168,7 +168,7 @@ namespace SysAlunos
                         SqlParameter parNotaQt = new SqlParameter
                         {
                             ParameterName = "@notaqt",
-                            SqlDbType = SqlDbType.Float,
+                            SqlDbType = SqlDbType.Decimal,
                             Value = 0
                         };
                         sqlCmd.Parameters.Add(parNotaQt);
@@ -177,7 +177,7 @@ namespace SysAlunos
                         SqlParameter parMedia = new SqlParameter
                         {
                             ParameterName = "@media",
-                            SqlDbType = SqlDbType.Float,
+                            SqlDbType = SqlDbType.Decimal,
                             Value = 0
                         };
                         sqlCmd.Parameters.Add(parMedia);
@@ -285,11 +285,99 @@ namespace SysAlunos
 
 
         //método editar notas
-        public string EditarNotas(int idAluno, float npt, float nst, float ntt, float qt)
+        public string EditarNotas(int idAluno, decimal npt, decimal nst, decimal ntt, decimal nqt)
         {
             string resposta = "";
 
+            //Cria uma conexão com o banco de dados e garante que ela será fechada e liberada corretamente após o uso.
+            using (SqlConnection sqlCon = new SqlConnection(Conexao.Cn))
+            {
+                try
+                {
+                    //abrindo conexão
+                    sqlCon.Open();
 
+                    //cria um comando sql que vai chamar uma função que foi escrita no sql (stored procedure)
+                    using (SqlCommand sqlCmd = new SqlCommand("speditar_notas", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+
+                        // Parâmetro de saída para o ID da nome
+                        SqlParameter parIdAluno = new SqlParameter
+                        {
+                            ParameterName = "@idaluno",
+                            SqlDbType = SqlDbType.Int,
+                            //Direction = ParameterDirection.Output,
+                            Value = idAluno
+                        };
+                        sqlCmd.Parameters.Add(parIdAluno);
+
+                        // Parâmetro para a noda do primeiro trimestre
+                        SqlParameter parNotaPt = new SqlParameter
+                        {
+                            ParameterName = "@notapt",
+                            SqlDbType=SqlDbType.Decimal,
+                            Precision = 5,   // Total de dígitos, o número pode ter até 5 dígitos no total, incluindo os dígitos após o ponto decimal.
+                            Scale = 2,       // Dígitos após o ponto decimal
+                            Value = npt
+                        };
+                        sqlCmd.Parameters.Add(parNotaPt);
+
+                        // Parâmetro para a noda do segundo trimestre
+                        SqlParameter parNotaSt = new SqlParameter
+                        {
+                            ParameterName = "@notast",
+                            SqlDbType = SqlDbType.Decimal,
+                            Value = nst
+                        };
+                        sqlCmd.Parameters.Add(parNotaSt);
+
+                        // Parâmetro para a noda do terceiro trimestre
+                        SqlParameter parNotaTt = new SqlParameter
+                        {
+                            ParameterName = "@notatt",
+                            SqlDbType = SqlDbType.Decimal,
+                            Value = ntt
+                        };
+                        sqlCmd.Parameters.Add(parNotaTt);
+
+                        // Parâmetro para a noda do quarto trimestre
+                        SqlParameter parNotaQt = new SqlParameter
+                        {
+                            ParameterName = "@notaqt",
+                            SqlDbType = SqlDbType.Decimal,
+                            Value = nqt
+                        };
+                        sqlCmd.Parameters.Add(parNotaQt);
+
+                        // Parâmetro para a média
+                        SqlParameter parMedia = new SqlParameter
+                        {
+                            ParameterName = "@media",
+                            SqlDbType = SqlDbType.Decimal,
+                            Value = (npt + nst + ntt + nqt) / 4
+                        };
+                        sqlCmd.Parameters.Add(parMedia);
+
+                        // Executa o comando e verifica se a inserção foi bem-sucedida
+                        int linhasAfetadas = sqlCmd.ExecuteNonQuery();
+                        if (linhasAfetadas == 1)
+                        {
+                            int id_Aluno = Convert.ToInt32(parIdAluno.Value);
+                            resposta = $"OK. ID da nova aluno: {id_Aluno}";
+                        }
+                        else
+                        {
+                            resposta = "Registro não inserido";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    resposta = $"Erro: {ex.Message}";
+                    Debug.WriteLine("ERRO: " + resposta);
+                }
+            }
 
             return resposta;
         }
@@ -299,7 +387,7 @@ namespace SysAlunos
         {
             string resposta = "";
 
-
+            
 
             return resposta;
         }
