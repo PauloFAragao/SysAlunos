@@ -217,7 +217,7 @@ namespace SysAlunos
         public string EditarAluno(int idAluno, string nome, int numero)
         {
             string resposta = "";
-
+            
             //Cria uma conexão com o banco de dados e garante que ela será fechada e liberada corretamente após o uso.
             using (SqlConnection sqlCon = new SqlConnection(Conexao.Cn))
             {
@@ -236,7 +236,7 @@ namespace SysAlunos
                         {
                             ParameterName = "@idaluno",
                             SqlDbType = SqlDbType.Int,
-                            Direction = ParameterDirection.Output,
+                            //Direction = ParameterDirection.Output,
                             Value = idAluno
                         };
                         sqlCmd.Parameters.Add(parIdAluno);
@@ -276,6 +276,7 @@ namespace SysAlunos
                 catch (Exception ex)
                 {
                     resposta = $"Erro: {ex.Message}";
+                    Debug.WriteLine("ERRO: " + resposta);
                 }
             }
 

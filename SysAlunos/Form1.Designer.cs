@@ -37,9 +37,17 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Lbl_retorno = new System.Windows.Forms.Label();
+            this.Txt_nome_editar = new System.Windows.Forms.TextBox();
+            this.Txt_numero_editar = new System.Windows.Forms.TextBox();
+            this.Txt_id_editar = new System.Windows.Forms.TextBox();
+            this.Btn_editar = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -125,6 +133,14 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.Btn_editar);
+            this.tabPage2.Controls.Add(this.Txt_id_editar);
+            this.tabPage2.Controls.Add(this.Txt_numero_editar);
+            this.tabPage2.Controls.Add(this.Txt_nome_editar);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.Txt_nome_adiconar);
@@ -138,15 +154,6 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Nome:";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -156,6 +163,15 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Número:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Nome:";
+            // 
             // Lbl_retorno
             // 
             this.Lbl_retorno.AutoSize = true;
@@ -164,6 +180,73 @@
             this.Lbl_retorno.Size = new System.Drawing.Size(22, 13);
             this.Lbl_retorno.TabIndex = 7;
             this.Lbl_retorno.Text = "- - -";
+            // 
+            // Txt_nome_editar
+            // 
+            this.Txt_nome_editar.Location = new System.Drawing.Point(369, 213);
+            this.Txt_nome_editar.Name = "Txt_nome_editar";
+            this.Txt_nome_editar.Size = new System.Drawing.Size(145, 20);
+            this.Txt_nome_editar.TabIndex = 8;
+            // 
+            // Txt_numero_editar
+            // 
+            this.Txt_numero_editar.Location = new System.Drawing.Point(369, 239);
+            this.Txt_numero_editar.Name = "Txt_numero_editar";
+            this.Txt_numero_editar.Size = new System.Drawing.Size(145, 20);
+            this.Txt_numero_editar.TabIndex = 9;
+            // 
+            // Txt_id_editar
+            // 
+            this.Txt_id_editar.Location = new System.Drawing.Point(369, 187);
+            this.Txt_id_editar.Name = "Txt_id_editar";
+            this.Txt_id_editar.Size = new System.Drawing.Size(145, 20);
+            this.Txt_id_editar.TabIndex = 10;
+            // 
+            // Btn_editar
+            // 
+            this.Btn_editar.Location = new System.Drawing.Point(530, 215);
+            this.Btn_editar.Name = "Btn_editar";
+            this.Btn_editar.Size = new System.Drawing.Size(75, 23);
+            this.Btn_editar.TabIndex = 11;
+            this.Btn_editar.Text = "Editar";
+            this.Btn_editar.UseVisualStyleBackColor = true;
+            this.Btn_editar.Click += new System.EventHandler(this.Btn_editar_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(394, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(90, 13);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Temprario - Editar";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(345, 194);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "ID";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(328, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Nome";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(319, 242);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Número";
             // 
             // Form1
             // 
@@ -200,6 +283,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Lbl_retorno;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button Btn_editar;
+        private System.Windows.Forms.TextBox Txt_id_editar;
+        private System.Windows.Forms.TextBox Txt_numero_editar;
+        private System.Windows.Forms.TextBox Txt_nome_editar;
     }
 }
 

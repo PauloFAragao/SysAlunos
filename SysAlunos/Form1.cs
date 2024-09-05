@@ -45,11 +45,28 @@ namespace SysAlunos
             }
         }
 
+        private void EditarAluno()
+        {
+            int id = int.Parse(this.Txt_id_editar.Text);
+            string nome = this.Txt_nome_editar.Text;
+            int numero = int.Parse(this.Txt_numero_editar.Text);
+
+            //Debug.WriteLine("ID: "+ id);
+            //Debug.WriteLine("Nome: " + nome);
+            //Debug.WriteLine("Número: " + numero);
+
+            //if ( id != 0 && String.IsNullOrWhiteSpace(nome) && numero != 0) 
+            //{
+                //Debug.WriteLine("Chamando o método EditarAluno");
+                Lbl_retorno.Text = dados.EditarAluno(id, nome, numero);
+            //}
+        }
+
         //Ocultar as colunas
         private void OcultarColunas()
         {
             // Torna a coluna 0 invisível
-            this.dataLista.Columns[0].Visible = false;
+            //this.dataLista.Columns[0].Visible = false;
         }
 
         private void MudarNomeDasColunas()
@@ -105,6 +122,11 @@ namespace SysAlunos
         {
             InserirAluno();
             Mostrar();
+        }
+
+        private void Btn_editar_Click(object sender, EventArgs e)
+        {
+            EditarAluno();
         }
     }
 }
