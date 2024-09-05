@@ -1,0 +1,10 @@
+C:\SysAlunos\SysAlunos\bin\Debug\SysAlunos.exe.config
+C:\SysAlunos\SysAlunos\bin\Debug\SysAlunos.exe
+C:\SysAlunos\SysAlunos\bin\Debug\SysAlunos.pdb
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.csproj.AssemblyReference.cache
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.Form1.resources
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.Properties.Resources.resources
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.csproj.GenerateResource.cache
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.csproj.CoreCompileInputs.cache
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.exe
+C:\SysAlunos\SysAlunos\obj\Debug\SysAlunos.pdb
