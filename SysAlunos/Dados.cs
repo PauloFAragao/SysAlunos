@@ -14,7 +14,7 @@ namespace SysAlunos
         public Dados() { }
 
         //método mostrar
-        public DataTable Mostrar()
+        public static DataTable Mostrar()
         {
             // Objeto do tipo DataTable
             DataTable DtResultado = new DataTable("alunos");
@@ -53,7 +53,7 @@ namespace SysAlunos
         }
 
         //método buscar
-        public DataTable BuscarNome(string nome)
+        public static DataTable BuscarNome(string nome)
         {
             // Objeto do tipo DataTable
             DataTable DtResultado = new DataTable("alunos");
@@ -101,7 +101,7 @@ namespace SysAlunos
         }
 
         //método inserir
-        public string Inserir(string nome, int numero)
+        public static string Inserir(string nome, int numero)
         {
             string resposta = "";
 
@@ -214,7 +214,7 @@ namespace SysAlunos
         }
 
         //método editar aluno
-        public string EditarAluno(int idAluno, string nome, int numero)
+        public static string EditarAluno(int idAluno, string nome, int numero)
         {
             string resposta = "";
             
@@ -285,7 +285,7 @@ namespace SysAlunos
 
 
         //método editar notas
-        public string EditarNotas(int idAluno, decimal npt, decimal nst, decimal ntt, decimal nqt)
+        public static string EditarNotas(int idAluno, decimal npt, decimal nst, decimal ntt, decimal nqt)
         {
             string resposta = "";
 
@@ -383,11 +383,62 @@ namespace SysAlunos
         }
 
         //método editar status
-        public string EditarStatus(int idAluno, string status)
+        public static string EditarStatus(int idAluno, string status)
         {
             string resposta = "";
 
-            
+            //Cria uma conexão com o banco de dados e garante que ela será fechada e liberada corretamente após o uso.
+            using (SqlConnection sqlCon = new SqlConnection(Conexao.Cn))
+            {
+                try
+                {
+                    //abrindo conexão
+                    sqlCon.Open();
+
+                    //cria um comando sql que vai chamar uma função que foi escrita no sql (stored procedure)
+                    using (SqlCommand sqlCmd = new SqlCommand("speditar_status", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+
+                        // Parâmetro de saída para o ID da nome
+                        SqlParameter parIdAluno = new SqlParameter
+                        {
+                            ParameterName = "@idaluno",
+                            SqlDbType = SqlDbType.Int,
+                            //Direction = ParameterDirection.Output,
+                            Value = idAluno
+                        };
+                        sqlCmd.Parameters.Add(parIdAluno);
+
+                        // Parâmetro para o status do aluno
+                        SqlParameter parStatus = new SqlParameter
+                        {
+                            ParameterName = "@status",
+                            SqlDbType = SqlDbType.VarChar,
+                            Size = 20,
+                            Value = status
+                        };
+                        sqlCmd.Parameters.Add(parStatus);
+
+                        // Executa o comando e verifica se a inserção foi bem-sucedida
+                        int linhasAfetadas = sqlCmd.ExecuteNonQuery();
+                        if (linhasAfetadas == 1)
+                        {
+                            int id_Aluno = Convert.ToInt32(parIdAluno.Value);
+                            resposta = $"OK. ID da nova aluno: {id_Aluno}";
+                        }
+                        else
+                        {
+                            resposta = "Registro não inserido";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    resposta = $"Erro: {ex.Message}";
+                    Debug.WriteLine("ERRO: " + resposta);
+                }
+            }
 
             return resposta;
         }

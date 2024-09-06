@@ -13,7 +13,7 @@ namespace SysAlunos
 {
     public partial class Form1 : Form
     {
-        Dados dados = new Dados();
+        //Dados dados = new Dados();
 
         public Form1()
         {
@@ -23,14 +23,14 @@ namespace SysAlunos
         //Mostrar no Data Grid
         private void Mostrar()
         {
-            this.dataLista.DataSource = dados.Mostrar();
-            OcultarColunas();
+            this.dataLista.DataSource = Dados.Mostrar();
+            
         }
 
         //Buscar pelo Nome
         private void BuscarNome()
         {
-            this.dataLista.DataSource = dados.BuscarNome(this.Txt_nome.Text);
+            this.dataLista.DataSource = Dados.BuscarNome(this.Txt_nome.Text);
             this.OcultarColunas();
         }
 
@@ -63,7 +63,7 @@ namespace SysAlunos
 
             if (nome != null && numero > 0)
             {
-                Lbl_retorno.Text = dados.Inserir(nome, numero);
+                Lbl_retorno.Text = Dados.Inserir(nome, numero);
             }
         }
 
@@ -106,7 +106,7 @@ namespace SysAlunos
             if ( id > 0 && !String.IsNullOrWhiteSpace(nome) && numero > 0) 
             {
                 Debug.WriteLine("Chamando o método EditarAluno");
-                Lbl_retorno.Text = dados.EditarAluno(id, nome, numero);
+                Lbl_retorno.Text = Dados.EditarAluno(id, nome, numero);
             }
         }
 
@@ -177,8 +177,36 @@ namespace SysAlunos
             //verificando para mandar os dados para o método que vai escrever no banco
             if (id > 0 && notaPt > 0 && notaSt > 0 && notaTt > 0 && notaQt > 0)
             {
-                Lbl_retorno.Text = dados.EditarNotas(id, notaPt, notaSt, notaTt, notaQt);
+                Lbl_retorno.Text = Dados.EditarNotas(id, notaPt, notaSt, notaTt, notaQt);
             }
+        }
+
+        //editar status
+        private void EditarStatus()
+        {
+            int id = 0;
+            string status = "";
+
+            //capturando o valor do campo id
+            if (!String.IsNullOrWhiteSpace(this.Txt_id_status.Text))
+            {
+                if (int.TryParse(this.Txt_id_status.Text, out int parsedId))
+                {
+                    id = parsedId;
+                }
+                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
+            }
+            else { Debug.WriteLine("Campo id não preenchido"); }
+
+            //capturado o status selecionado no combo box
+            status = Cbx_status.Text;
+
+            //verificando para mandar os dados para o método que vai escrever no banco de dados
+            if (id > 0)
+            {
+                Dados.EditarStatus(id, status);
+            }
+
         }
 
         //Ocultar as colunas
@@ -219,7 +247,11 @@ namespace SysAlunos
         private void Form1_Load(object sender, EventArgs e)
         {
             Mostrar();
+            OcultarColunas();
             MudarNomeDasColunas();
+
+            //Setando para o combo box já estar com o status Aprovado selecionado
+            Cbx_status.SelectedIndex = 0;
         }
 
         private void Btn_buscar_Click(object sender, EventArgs e)
@@ -246,11 +278,19 @@ namespace SysAlunos
         private void Btn_editar_Click(object sender, EventArgs e)
         {
             EditarAluno();
+            Mostrar();
         }
 
         private void Btn_editar_notas_Click(object sender, EventArgs e)
         {
             EditarNotas();
+            Mostrar();
+        }
+
+        private void Btn_editar_status_Click(object sender, EventArgs e)
+        {
+            EditarStatus();
+            Mostrar();
         }
     }
 }
