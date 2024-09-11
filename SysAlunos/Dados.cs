@@ -101,7 +101,7 @@ namespace SysAlunos
         }
 
         //método inserir
-        public static string Inserir(string nome, int numero)
+        public static string Inserir(string nome, int numero, decimal npt, decimal nst, decimal ntt, decimal nqt, string status)
         {
             string resposta = "";
 
@@ -142,7 +142,7 @@ namespace SysAlunos
                         {
                             ParameterName = "@notapt",
                             SqlDbType = SqlDbType.Decimal,
-                            Value = 0
+                            Value = npt
                         };
                         sqlCmd.Parameters.Add(parNotaPt);
 
@@ -151,7 +151,7 @@ namespace SysAlunos
                         {
                             ParameterName = "@notast",
                             SqlDbType = SqlDbType.Decimal,
-                            Value = 0
+                            Value = nst
                         };
                         sqlCmd.Parameters.Add(parNotaSt);
 
@@ -160,7 +160,7 @@ namespace SysAlunos
                         {
                             ParameterName = "@notatt",
                             SqlDbType = SqlDbType.Decimal,
-                            Value = 0
+                            Value = ntt
                         };
                         sqlCmd.Parameters.Add(parNotaTt);
 
@@ -169,7 +169,7 @@ namespace SysAlunos
                         {
                             ParameterName = "@notaqt",
                             SqlDbType = SqlDbType.Decimal,
-                            Value = 0
+                            Value = nqt
                         };
                         sqlCmd.Parameters.Add(parNotaQt);
 
@@ -178,7 +178,7 @@ namespace SysAlunos
                         {
                             ParameterName = "@media",
                             SqlDbType = SqlDbType.Decimal,
-                            Value = 0
+                            Value = (npt + nst + ntt + nqt) / 4
                         };
                         sqlCmd.Parameters.Add(parMedia);
 
@@ -188,7 +188,7 @@ namespace SysAlunos
                             ParameterName = "@status",
                             SqlDbType = SqlDbType.VarChar,
                             Size = 20,
-                            Value = "nulo"
+                            Value = status
                         };
                         sqlCmd.Parameters.Add(parStatus);
 
@@ -260,16 +260,16 @@ namespace SysAlunos
                         };
                         sqlCmd.Parameters.Add(parNumero);
 
-                        // Executa o comando e verifica se a inserção foi bem-sucedida
+                        // Executa o comando e verifica se a edição foi bem-sucedida
                         int linhasAfetadas = sqlCmd.ExecuteNonQuery();
                         if (linhasAfetadas == 1)
                         {
                             int id_Aluno = Convert.ToInt32(parIdAluno.Value);
-                            resposta = $"OK. ID da nova aluno: {id_Aluno}";
+                            resposta = $"Registro editado com sucesso";
                         }
                         else
                         {
-                            resposta = "Registro não inserido";
+                            resposta = "Registro não editado";
                         }
                     }
                 }
@@ -282,7 +282,6 @@ namespace SysAlunos
 
             return resposta;
         }
-
 
         //método editar notas
         public static string EditarNotas(int idAluno, decimal npt, decimal nst, decimal ntt, decimal nqt)
@@ -359,16 +358,16 @@ namespace SysAlunos
                         };
                         sqlCmd.Parameters.Add(parMedia);
 
-                        // Executa o comando e verifica se a inserção foi bem-sucedida
+                        // Executa o comando e verifica se a edição foi bem-sucedida
                         int linhasAfetadas = sqlCmd.ExecuteNonQuery();
                         if (linhasAfetadas == 1)
                         {
                             int id_Aluno = Convert.ToInt32(parIdAluno.Value);
-                            resposta = $"OK. ID da nova aluno: {id_Aluno}";
+                            resposta = $"Registro editado com sucesso";
                         }
                         else
                         {
-                            resposta = "Registro não inserido";
+                            resposta = "Registro não editado";
                         }
                     }
                 }
@@ -420,16 +419,67 @@ namespace SysAlunos
                         };
                         sqlCmd.Parameters.Add(parStatus);
 
-                        // Executa o comando e verifica se a inserção foi bem-sucedida
+                        // Executa o comando e verifica se a edição foi bem-sucedida
                         int linhasAfetadas = sqlCmd.ExecuteNonQuery();
                         if (linhasAfetadas == 1)
                         {
                             int id_Aluno = Convert.ToInt32(parIdAluno.Value);
-                            resposta = $"OK. ID da nova aluno: {id_Aluno}";
+                            resposta = $"Registro editado com sucesso";
                         }
                         else
                         {
-                            resposta = "Registro não inserido";
+                            resposta = "Registro não editado";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    resposta = $"Erro: {ex.Message}";
+                    Debug.WriteLine("ERRO: " + resposta);
+                }
+            }
+
+            return resposta;
+        }
+
+        //método deletar aluno
+        public static string DeletarAluno(int idAluno)
+        {
+            string resposta = "";
+
+            //Cria uma conexão com o banco de dados e garante que ela será fechada e liberada corretamente após o uso.
+            using (SqlConnection sqlCon = new SqlConnection(Conexao.Cn))
+            {
+                try
+                {
+                    //abrindo conexão
+                    sqlCon.Open();
+
+                    //cria um comando sql que vai chamar uma função que foi escrita no sql (stored procedure)
+                    using (SqlCommand sqlCmd = new SqlCommand("spdeletar_aluno", sqlCon))
+                    {
+                        sqlCmd.CommandType = CommandType.StoredProcedure;
+
+                        // Parâmetro de saída para o ID da nome
+                        SqlParameter parIdAluno = new SqlParameter
+                        {
+                            ParameterName = "@idaluno",
+                            SqlDbType = SqlDbType.Int,
+                            //Direction = ParameterDirection.Output,
+                            Value = idAluno
+                        };
+                        sqlCmd.Parameters.Add(parIdAluno);
+
+                        // Executa o comando e verifica se foi deletado com sucesso
+                        int linhasAfetadas = sqlCmd.ExecuteNonQuery();
+                        if (linhasAfetadas == 1)
+                        {
+                            int id_Aluno = Convert.ToInt32(parIdAluno.Value);
+                            resposta = $"Registro deletado com sucesso";
+                        }
+                        else
+                        {
+                            resposta = "Registro não deletado";
                         }
                     }
                 }
