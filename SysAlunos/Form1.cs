@@ -27,14 +27,30 @@ namespace SysAlunos
 
         private void MensagensDoToolTip()
         {
-            this.ttMensagem.SetToolTip(Txt_nome, "Nome do Aluno que deve ser buscado");
+            this.ttMensagem.SetToolTip(Txt_nome, "Nome do aluno que deve ser buscado");
+
+            this.ttMensagem.SetToolTip(TxtId, "Id interno do aluno");
+            this.ttMensagem.SetToolTip(TxtNome, "Insira o nome do aluno");
+            this.ttMensagem.SetToolTip(TxtNumero, "Número do aluno na chamada");
+
+            this.ttMensagem.SetToolTip(ChkEditarNotas, "Habilitar para editar as notas");
+
+            this.ttMensagem.SetToolTip(TxtNPT, "Nota do primeiro trimestre");
+            this.ttMensagem.SetToolTip(TxtNST, "Nota do segundo trimestre");
+            this.ttMensagem.SetToolTip(TxtNTT, "Nota do terceiro trimestre");
+            this.ttMensagem.SetToolTip(TxtNQT, "Nota do quarto trimestre");
+
+            this.ttMensagem.SetToolTip(ChkEditarStatus, "Habilitar para editar o statuso do aluno");
+
+            this.ttMensagem.SetToolTip(CbxStatus, "Status do aluno, Aprovado ou Reprovado");
+            
         }
 
         //Mostrar no Data Grid
         private void Mostrar()
         {
             this.dataLista.DataSource = Dados.Mostrar();
-            
+
         }
 
         //Buscar pelo Nome
@@ -42,213 +58,6 @@ namespace SysAlunos
         {
             this.dataLista.DataSource = Dados.BuscarNome(this.Txt_nome.Text);
             this.OcultarColunas();
-        }
-
-        //Inserção de alunos
-        private void InserirAluno()
-        {
-            string nome = "";
-            int numero = 0;
-
-            //capturando o valor do campo nome
-            if (!String.IsNullOrWhiteSpace(this.Txt_nome_adiconar.Text))
-            {
-                nome = this.Txt_nome_adiconar.Text;
-            }
-            else { Debug.WriteLine("Campo nome não preenchido"); }
-
-            //capturando o valor do campo numero
-            if (!String.IsNullOrWhiteSpace(this.Txt_numero_adiconar.Text))
-            {
-                if (int.TryParse(this.Txt_numero_adiconar.Text, out int parsedNumero))
-                {
-                    numero = parsedNumero;
-                }
-                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
-            }
-            else { Debug.WriteLine("Campo numero não preenchido"); }
-
-            //string nome = this.Txt_nome_adiconar.Text;
-            //int numero = int.Parse(this.Txt_numero_adiconar.Text);
-
-            if (nome != null && numero > 0)
-            {
-                Lbl_retorno.Text = Dados.Inserir(nome, numero, 0, 0, 0, 0, "nulo");
-            }
-        }
-
-        //Edição de alunos
-        private void EditarAluno()
-        {
-            int id = 0;
-            string nome = "";
-            int numero = 0;
-
-            //capturando o valor do campo id
-            if (!String.IsNullOrWhiteSpace(this.Txt_id_editar.Text))
-            {
-                if (int.TryParse(this.Txt_id_editar.Text, out int parsedId))
-                {
-                    id = parsedId;
-                }
-                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
-            } else { Debug.WriteLine("Campo id não preenchido"); }
-
-            //capturando o valor do campo nome
-            if (!String.IsNullOrWhiteSpace(this.Txt_nome_editar.Text))
-            {
-                nome = this.Txt_nome_editar.Text;
-            }
-            else { Debug.WriteLine("Campo nome não preenchido"); }
-
-            //capturando o valor do campo numero
-            if (!String.IsNullOrWhiteSpace(this.Txt_numero_editar.Text))
-            {
-                if (int.TryParse(this.Txt_numero_editar.Text, out int parsedNumero))
-                {
-                    numero = parsedNumero;
-                }
-                else { Debug.WriteLine("O valor inserido no campo Número não pode ser convertido para inteiro!"); }
-            }
-            else { Debug.WriteLine("Campo número não preenchido"); }
-
-            //verificando para mandar os dados para o método que vai escrever no banco
-            if ( id > 0 && !String.IsNullOrWhiteSpace(nome) && numero > 0) 
-            {
-                Debug.WriteLine("Chamando o método EditarAluno");
-                Lbl_retorno.Text = Dados.EditarAluno(id, nome, numero);
-            }
-        }
-
-        //edição de notas
-        private void EditarNotas()
-        {   
-            int id = 0;
-            decimal notaPt = 0m;
-            decimal notaSt = 0m;
-            decimal notaTt = 0m;
-            decimal notaQt = 0m;
-
-            //capturando o valor do campo id
-            if (!String.IsNullOrWhiteSpace(this.Txt_id_editar_.Text))
-            {
-                if (int.TryParse(this.Txt_id_editar_.Text, out int parsedId))
-                {
-                    id = parsedId;
-                }
-                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
-            }
-            else { Debug.WriteLine("Campo id não preenchido"); }
-
-            //capturando o valor do campo da nota do primeiro trimestre
-            if (!String.IsNullOrWhiteSpace(this.Txt_notapt.Text))
-            {
-                if (decimal.TryParse(this.Txt_notapt.Text, out decimal parsedNPt))
-                {
-                    notaPt = parsedNPt;
-                }
-                else { Debug.WriteLine("O valor inserido no campo da nota do primeiro trimestre não pode ser convertido para float!"); }
-            }
-            else { Debug.WriteLine("Campo da nota do primeiro trimestre não preenchido"); }
-
-            //capturando o valor do campo da nota do segundo trimestre
-            if (!String.IsNullOrWhiteSpace(this.Txt_notast.Text))
-            {
-                if (decimal.TryParse(this.Txt_notast.Text, out decimal parsedNSt))
-                {
-                    notaSt = parsedNSt;
-                }
-                else { Debug.WriteLine("O valor inserido no campo da nota do segundo trimestre não pode ser convertido para float!"); }
-            }
-            else { Debug.WriteLine("Campo da nota do segundo trimestre não preenchido"); }
-
-            //capturando o valor do campo da nota do terceciro trimestre
-            if (!String.IsNullOrWhiteSpace(this.Txt_notatt.Text))
-            {
-                if (decimal.TryParse(this.Txt_notatt.Text, out decimal parsedNTt))
-                {
-                    notaTt = parsedNTt;
-                }
-                else { Debug.WriteLine("O valor inserido no campo da nota do terceciro trimestre não pode ser convertido para float!"); }
-            }
-            else { Debug.WriteLine("Campo da nota do terceciro trimestre não preenchido"); }
-
-            //capturando o valor do campo da nota do quarto trimestre
-            if (!String.IsNullOrWhiteSpace(this.Txt_notaqt.Text))
-            {
-                if (decimal.TryParse(this.Txt_notaqt.Text, out decimal parsedNQt))
-                {
-                    notaQt = parsedNQt;
-                }
-                else { Debug.WriteLine("O valor inserido no campo da nota do quarto trimestre não pode ser convertido para float!"); }
-            }
-            else { Debug.WriteLine("Campo da nota do quarto trimestre não preenchido"); }
-
-            //verificando para mandar os dados para o método que vai escrever no banco
-            if (id > 0 && notaPt > 0 && notaSt > 0 && notaTt > 0 && notaQt > 0)
-            {
-                Lbl_retorno.Text = Dados.EditarNotas(id, notaPt, notaSt, notaTt, notaQt);
-            }
-        }
-
-        //editar status
-        private void EditarStatus()
-        {
-            int id = 0;
-            string status = "";
-
-            //capturando o valor do campo id
-            if (!String.IsNullOrWhiteSpace(this.Txt_id_status.Text))
-            {
-                if (int.TryParse(this.Txt_id_status.Text, out int parsedId))
-                {
-                    id = parsedId;
-                }
-                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
-            }
-            else { Debug.WriteLine("Campo id não preenchido"); }
-
-            //capturado o status selecionado no combo box
-            status = Cbx_status.Text;
-
-            //verificando para mandar os dados para o método que vai escrever no banco de dados
-            if (id > 0)
-            {
-                Lbl_retorno.Text = Dados.EditarStatus(id, status);
-            }
-
-        }
-
-        //deletar um aluno
-        private void DeletarAluno()
-        {
-            int id = 0;
-
-            //capturando o valor do campo id
-            if (!String.IsNullOrWhiteSpace(this.Txt_id_deletar.Text))
-            {
-                if (int.TryParse(this.Txt_id_deletar.Text, out int parsedId))
-                {
-                    id = parsedId;
-                }
-                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
-            }
-            else { Debug.WriteLine("Campo id não preenchido"); }
-
-            //verificando para deletar o aluno
-            if (id > 0)
-            {
-                Lbl_retorno.Text = Dados.DeletarAluno(id);
-            }
-        }
-
-        //habilita a edição das notas
-        private void HabilitarEditarNotas(bool status)
-        {
-            this.TxtNPT.Enabled = status;
-            this.TxtNST.Enabled = status;
-            this.TxtNTT.Enabled = status;
-            this.TxtNQT.Enabled = status;
         }
 
         //Ocultar as colunas
@@ -286,6 +95,26 @@ namespace SysAlunos
             this.dataLista.Columns[8].HeaderText = "Status";
         }
 
+        //habilita a edição das notas
+        private void HabilitarEditarNotas(bool status)
+        {
+            this.TxtNPT.Enabled = status;
+            this.TxtNST.Enabled = status;
+            this.TxtNTT.Enabled = status;
+            this.TxtNQT.Enabled = status;
+        }
+
+        private void TirarErrorProvider()
+        {
+            ErrorIcone.SetError(TxtNome, string.Empty);
+            ErrorIcone.SetError(TxtNumero, string.Empty);
+
+            ErrorIcone.SetError(TxtNPT, string.Empty);
+            ErrorIcone.SetError(TxtNST, string.Empty);
+            ErrorIcone.SetError(TxtNTT, string.Empty);
+            ErrorIcone.SetError(TxtNQT, string.Empty);
+        }
+
         private void LimparCampos()
         {
             this.TxtId.Text = string.Empty;
@@ -302,6 +131,8 @@ namespace SysAlunos
             this.ChkEditarStatus.Checked = false;
 
             this.CbxStatus.SelectedIndex = 0;
+
+            TirarErrorProvider();
         }
 
         private void DesabilitarTudo()
@@ -328,10 +159,8 @@ namespace SysAlunos
             ModoEditar = false;
         }
 
-        private void HabilitarInserir()
+        private void HabilitarCampos()
         {
-            ModoInserir = true;
-
             //habilitando os campos
             this.TxtNome.Enabled = true;
             this.TxtNumero.Enabled = true;
@@ -344,7 +173,7 @@ namespace SysAlunos
 
         private void Salvar()
         {
-            int id;
+            int id = 0;
             string nome = "";
             int numero = 0;
             decimal notaPT = 0;
@@ -353,12 +182,20 @@ namespace SysAlunos
             decimal notaQT = 0;
             string status = "";
 
+            bool podeSalvar = true;
+
             //capturando o valor do campo nome
             if (!String.IsNullOrWhiteSpace(this.TxtNome.Text))
             {
                 nome = this.TxtNome.Text;
             }
-            else { Debug.WriteLine("Campo nome não preenchido"); }
+            else 
+            {
+                podeSalvar = false;
+
+                Debug.WriteLine("Campo nome não preenchido");
+                ErrorIcone.SetError(this.TxtNome, "Insira o nome");
+            }
 
             //capturando o valor do campo numero
             if (!String.IsNullOrWhiteSpace(this.TxtNumero.Text))
@@ -367,9 +204,21 @@ namespace SysAlunos
                 {
                     numero = parsedNumero;
                 }
-                else { Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!"); }
+                else 
+                {
+                    podeSalvar = false;
+
+                    Debug.WriteLine("O valor inserido no campo id não pode ser convertido para inteiro!");
+                    ErrorIcone.SetError(this.TxtNome, "Insira um número inteiro");
+                }
             }
-            else { Debug.WriteLine("Campo numero não preenchido"); }
+            else 
+            {
+                podeSalvar = false;
+
+                Debug.WriteLine("Campo numero não preenchido");
+                ErrorIcone.SetError(this.TxtNumero, "Insira o número da chamada");
+            }
 
             if (ChkEditarNotas.Checked)
             {
@@ -380,9 +229,21 @@ namespace SysAlunos
                     {
                         notaPT = value;
                     }
-                    else { Debug.WriteLine("O valor inserido no campo da nota do primeiro trimestre não pode ser convertido para decimal!"); }
+                    else 
+                    {
+                        podeSalvar = false;
+
+                        Debug.WriteLine("O valor inserido no campo da nota do primeiro trimestre não pode ser convertido para decimal!");
+                        ErrorIcone.SetError(this.TxtNPT, "Insira um número Decimal");
+                    }
                 }
-                else { Debug.WriteLine("Campo da nota do primeiro trimestre não preenchido"); }
+                else 
+                {
+                    podeSalvar = false;
+
+                    Debug.WriteLine("Campo da nota do primeiro trimestre não preenchido");
+                    ErrorIcone.SetError(this.TxtNPT, "Insira a nota do primeiro trimestre");
+                }
 
                 //capturando o valor do campo da nota do segundo trimestre
                 if (!String.IsNullOrWhiteSpace(this.TxtNST.Text))
@@ -391,9 +252,21 @@ namespace SysAlunos
                     {
                         notaST = value;
                     }
-                    else { Debug.WriteLine("O valor inserido no campo da nota do segundo trimestre não pode ser convertido para decimal!"); }
+                    else 
+                    {
+                        podeSalvar = false;
+
+                        Debug.WriteLine("O valor inserido no campo da nota do segundo trimestre não pode ser convertido para decimal!");
+                        ErrorIcone.SetError(this.TxtNST, "Insira um número Decimal");
+                    }
                 }
-                else { Debug.WriteLine("Campo da nota do segundo trimestre não preenchido"); }
+                else 
+                {
+                    podeSalvar = false;
+
+                    Debug.WriteLine("Campo da nota do segundo trimestre não preenchido");
+                    ErrorIcone.SetError(this.TxtNST, "Insira a nota do segundo trimestre");
+                }
 
                 //capturando o valor do campo da nota do terceiro trimestre
                 if (!String.IsNullOrWhiteSpace(this.TxtNTT.Text))
@@ -402,9 +275,21 @@ namespace SysAlunos
                     {
                         notaTT = value;
                     }
-                    else { Debug.WriteLine("O valor inserido no campo da nota do terceiro trimestre não pode ser convertido para decimal!"); }
+                    else 
+                    {
+                        podeSalvar = false;
+
+                        Debug.WriteLine("O valor inserido no campo da nota do terceiro trimestre não pode ser convertido para decimal!");
+                        ErrorIcone.SetError(this.TxtNTT, "Insira um número Decimal");
+                    }
                 }
-                else { Debug.WriteLine("Campo da nota do terceiro trimestre não preenchido"); }
+                else 
+                {
+                    podeSalvar = false;
+
+                    Debug.WriteLine("Campo da nota do terceiro trimestre não preenchido");
+                    ErrorIcone.SetError(this.TxtNTT, "Insira a nota do terceiro trimestre");
+                }
 
                 //capturando o valor do campo da nota do quarto trimestre
                 if (!String.IsNullOrWhiteSpace(this.TxtNQT.Text))
@@ -413,9 +298,21 @@ namespace SysAlunos
                     {
                         notaQT = value;
                     }
-                    else { Debug.WriteLine("O valor inserido no campo da nota do quarto trimestre não pode ser convertido para decimal!"); }
+                    else 
+                    {
+                        podeSalvar = false;
+
+                        Debug.WriteLine("O valor inserido no campo da nota do quarto trimestre não pode ser convertido para decimal!");
+                        ErrorIcone.SetError(this.TxtNQT, "Insira um número Decimal");
+                    }
                 }
-                else { Debug.WriteLine("Campo da nota do quarto trimestre não preenchido"); }
+                else 
+                {
+                    podeSalvar = false;
+
+                    Debug.WriteLine("Campo da nota do quarto trimestre não preenchido");
+                    ErrorIcone.SetError(this.TxtNQT, "Insira a nota do quarto trimestre");
+                }
             }
             else
             {
@@ -432,35 +329,73 @@ namespace SysAlunos
             }
             else status = "Nulo";
 
-            Debug.WriteLine("Salvar");
-            if (ModoInserir)
+            if (ModoInserir && podeSalvar)
             {
-                Debug.WriteLine("Inserir");
                 Lbl_retorno.Text = Dados.Inserir(nome, numero, notaPT, notaST, notaTT, notaQT, status);
             }
-            
-            else if(ModoEditar)
+            else if (ModoEditar && podeSalvar)
             {
-                //aqui vai chamar o metodo Dados.EditarAluno
+                id = Convert.ToInt32(this.TxtId.Text);
+
+                Lbl_retorno.Text = Dados.EditarAluno(id, nome, numero);
+
                 if (ChkEditarNotas.Checked)
-                {
-                    //aqui vai chamar o metodo Dados.EditarNotas
-                }
+                    Lbl_retorno.Text += "-" + Dados.EditarNotas(id, notaPT, notaST, notaTT, notaQT);
+
                 if (ChkEditarStatus.Checked)
-                {
-                    //aqui vai chamar o metodo Dados.EditarStatus
-                }
+                    Lbl_retorno.Text += "-" + Dados.EditarStatus(id, status);
+
+            }
+            
+            if(podeSalvar)
+            {
+                //resetando tudo
+                LimparCampos();
+                DesabilitarTudo();
+                ResetarVariaveis();
+                this.BtnInserirAluno.Enabled = true;
+
+                //atualizando o DataGridView
+                Mostrar();
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            //resetando tudo
-            LimparCampos();
-            DesabilitarTudo();
-            ResetarVariaveis();
-            this.BtnInserirAluno.Enabled = true;
+        }
 
-            //atualizando o DataGridView
-            Mostrar();
+        private void Editar()
+        {
+            ModoEditar = true;
 
+            this.TxtId.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idaluno"].Value);
+
+            this.TxtNome.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["nome"].Value);
+            this.TxtNumero.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["numero"].Value);
+
+            this.TxtNPT.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["notapt"].Value);
+            this.TxtNST.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["notast"].Value);
+            this.TxtNTT.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["notatt"].Value);
+            this.TxtNQT.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["notaqt"].Value);
+
+            this.CbxStatus.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["status"].Value);
+
+            this.tabControl1.SelectedIndex = 1;
+
+            HabilitarCampos();
+        }
+
+        private void Deletar()
+        {
+            int id = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idaluno"].Value);
+
+            if (MessageBox.Show(
+                "Realmente Deseja Apagar o Aluno?",
+                "Apagar Aluno?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question) == DialogResult.OK )
+            {  Lbl_retorno.Text = Dados.DeletarAluno(id); }
         }
 
         //////////////////////// métodos gerados pelo Visual Studio
@@ -471,53 +406,17 @@ namespace SysAlunos
             MudarNomeDasColunas();
 
             //Setando para o combo box já estar com o status Aprovado selecionado
-            this.Cbx_status.SelectedIndex = 0;
             this.CbxStatus.SelectedIndex = 0;
         }
 
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
             BuscarNome();
-
-            //Debug.WriteLine("Valor: " + this.dataLista.TabIndex );
-            //Debug.WriteLine("Valor: " + this.dataLista.ToString());
-            //Debug.WriteLine("Valor: " + this.dataLista.Rows.Count);
-            //Debug.WriteLine("Valor: " + this.dataLista.Columns.Count); 
         }
 
         private void Txt_nome_TextChanged(object sender, EventArgs e)
         {
             BuscarNome();
-        }
-
-        private void Btn_inserir_Click(object sender, EventArgs e)
-        {
-            InserirAluno();
-            Mostrar();
-        }
-
-        private void Btn_editar_Click(object sender, EventArgs e)
-        {
-            EditarAluno();
-            Mostrar();
-        }
-
-        private void Btn_editar_notas_Click(object sender, EventArgs e)
-        {
-            EditarNotas();
-            Mostrar();
-        }
-
-        private void Btn_editar_status_Click(object sender, EventArgs e)
-        {
-            EditarStatus();
-            Mostrar();
-        }
-
-        private void Btn_deletar_Click(object sender, EventArgs e)
-        {
-            DeletarAluno();
-            Mostrar();
         }
 
         private void ChkEditarNotas_CheckedChanged(object sender, EventArgs e)
@@ -538,12 +437,16 @@ namespace SysAlunos
 
         private void BtnInserirAluno_Click(object sender, EventArgs e)
         {
-            HabilitarInserir();
+            LimparCampos();
+            HabilitarCampos();
+            ModoInserir = true;
         }
-        
+
         private void BtnInserir_Click(object sender, EventArgs e)
         {
-            HabilitarInserir();
+            LimparCampos();
+            HabilitarCampos();
+            ModoInserir = true;
             this.tabControl1.SelectedIndex = 1;
         }
 
@@ -558,6 +461,17 @@ namespace SysAlunos
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             Salvar();
+        }
+
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            Editar();
+        }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {
+            Deletar();
+            Mostrar();
         }
     }
 }
