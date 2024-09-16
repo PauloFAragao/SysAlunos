@@ -50,7 +50,6 @@ namespace SysAlunos
         private void Mostrar()
         {
             this.dataLista.DataSource = Dados.Mostrar();
-
         }
 
         //Buscar pelo Nome
@@ -72,27 +71,35 @@ namespace SysAlunos
         {
             // Altera o texto do cabeçalho da coluna 1 para "Nome do aluno"
             this.dataLista.Columns[1].HeaderText = "Nome do aluno";
+            this.dataLista.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 2 para "Número da chamada"
             this.dataLista.Columns[2].HeaderText = "Número da chamada";
+            this.dataLista.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 3 para "Nota do primeiro trimestre"
             this.dataLista.Columns[3].HeaderText = "Nota do primeiro trimestre";
+            this.dataLista.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 4 para "Nota do segundo trimestre"
             this.dataLista.Columns[4].HeaderText = "Nota do segundo trimestre";
+            this.dataLista.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 5 para "Nota do terceiro trimestre"
             this.dataLista.Columns[5].HeaderText = "Nota do terceiro trimestre";
+            this.dataLista.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 6 para "Nota do quarto trimestre"
             this.dataLista.Columns[6].HeaderText = "Nota do quarto trimestre";
+            this.dataLista.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 7 para "Média"
             this.dataLista.Columns[7].HeaderText = "Média";
+            this.dataLista.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             // Altera o texto do cabeçalho da coluna 8 para "Status"
             this.dataLista.Columns[8].HeaderText = "Status";
+            this.dataLista.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         //habilita a edição das notas

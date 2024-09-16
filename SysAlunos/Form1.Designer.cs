@@ -38,6 +38,7 @@
             this.BtnEditar = new System.Windows.Forms.Button();
             this.BtnInserir = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.CbxStatus = new System.Windows.Forms.ComboBox();
             this.BtnInserirAluno = new System.Windows.Forms.Button();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnSalvar = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@
             this.Lbl_retorno = new System.Windows.Forms.Label();
             this.ErrorIcone = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensagem = new System.Windows.Forms.ToolTip(this.components);
-            this.CbxStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -103,10 +103,11 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 36);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1089, 517);
+            this.tabControl1.Size = new System.Drawing.Size(1111, 565);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -120,7 +121,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1081, 491);
+            this.tabPage1.Size = new System.Drawing.Size(1103, 539);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listar";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -185,6 +186,19 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Configurações";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // CbxStatus
+            // 
+            this.CbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CbxStatus.Enabled = false;
+            this.CbxStatus.FormattingEnabled = true;
+            this.CbxStatus.Items.AddRange(new object[] {
+            "Aprovado",
+            "Reprovado"});
+            this.CbxStatus.Location = new System.Drawing.Point(75, 324);
+            this.CbxStatus.Name = "CbxStatus";
+            this.CbxStatus.Size = new System.Drawing.Size(145, 21);
+            this.CbxStatus.TabIndex = 53;
             // 
             // BtnInserirAluno
             // 
@@ -386,19 +400,6 @@
             // ttMensagem
             // 
             this.ttMensagem.IsBalloon = true;
-            // 
-            // CbxStatus
-            // 
-            this.CbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CbxStatus.Enabled = false;
-            this.CbxStatus.FormattingEnabled = true;
-            this.CbxStatus.Items.AddRange(new object[] {
-            "Aprovado",
-            "Reprovado"});
-            this.CbxStatus.Location = new System.Drawing.Point(75, 324);
-            this.CbxStatus.Name = "CbxStatus";
-            this.CbxStatus.Size = new System.Drawing.Size(145, 21);
-            this.CbxStatus.TabIndex = 53;
             // 
             // Form1
             // 
